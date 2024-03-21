@@ -1,6 +1,5 @@
 from calculator.calculator import Calculator
 from operands.operands import add,subtract,multiply,divide
-print('hello world')
 
 operandMap = {
     "+":add,
