@@ -3,3 +3,5 @@ calculator/__pycache__/*
 history/__pycache__/*
 operands/__pycache__/*
 operation/__pycache__/*
+histTester.py
+history/history_export.csv
