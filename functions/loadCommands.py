@@ -1,6 +1,7 @@
 import importlib
+from typing import Callable
 
-def loadCommand(command_name):
+def loadCommand(command_name: Callable) -> Callable:
     """
     Dynamically load and return the command module
     """

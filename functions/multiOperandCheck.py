@@ -1,6 +1,6 @@
 import re
 
-def multiOperandChecker(input_string):
+def multiOperandChecker(input_string: str) -> bool:
     # Define the pattern to match the operators
     pattern = r'[\+\-\*/]'
 

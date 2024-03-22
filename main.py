@@ -15,7 +15,8 @@ logging.info("Program started")
 loadEnv()
 
 try:
-    debugFlag = os.getenv("DEBUG", "False") == "True"
+    debugText = os.getenv("DEBUG_MODE")
+    debugFlag = debugText.lower() == 'true'
 except:
     debugFlag = False
 

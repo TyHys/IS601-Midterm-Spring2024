@@ -1,5 +1,5 @@
 import re
-def dynamicSpaceInsert(strIn):
+def dynamicSpaceInsert(strIn: str) -> str:
     pattern = r'(\d+)([\+\-\*/])(\d+)'
     replacement = r'\1 \2 \3'
     strIn = re.sub(pattern, replacement, strIn)

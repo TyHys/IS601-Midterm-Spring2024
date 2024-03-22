@@ -1,6 +1,6 @@
 import os 
 
-def loadEnv():
+def loadEnv() -> None:
     env_file_path = ".env"
     if os.path.exists(env_file_path):
         with open(env_file_path, "r") as file:
@@ -10,3 +10,4 @@ def loadEnv():
                     continue
                 key, value = line.split("=", 1)
                 os.environ[key.strip()] = value.strip()
+    return None
