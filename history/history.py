@@ -38,3 +38,18 @@ class History:
          return "History successfully imported"
       except:
          return "History failed to import"
+      
+    def deleteHistoryRow(self):
+       indexIn = input("Enter a row number to delete:")
+       
+       try:
+          indexIn = int(indexIn)
+       except:
+          return "Invalid input"
+
+
+       try:
+          self.histDf = self.histDf.drop(indexIn, axis=0)
+          return f"Row {indexIn} deleted from history"
+       except:
+          return "Row does not exist"
