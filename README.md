@@ -1,7 +1,7 @@
 # Advanced Python Calculator for Software Engineering Graduate Course
 
 ## To do list
-* Implement a command-plugin system
+* ~~Implement a command-plugin system~~
 * Implement logging
 * Add try/except checks for main.py to scrub inputs
 * Add 'delete history' command which will allow you to delete history row by index

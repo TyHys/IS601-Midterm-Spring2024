@@ -47,7 +47,6 @@ class History:
        except:
           return "Invalid input"
 
-
        try:
           self.histDf = self.histDf.drop(indexIn, axis=0)
           return f"Row {indexIn} deleted from history"
