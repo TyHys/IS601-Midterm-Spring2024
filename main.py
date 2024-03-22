@@ -6,6 +6,7 @@ from functions.multiOperandCheck import multiOperandChecker
 from functions.loadCommands import loadCommand
 from functions.removeWhitespaces import removeWhitespaces
 from functions.dynamicSpaceInsert import dynamicSpaceInsert
+from functions.processNumber import processNumber
 from functions.loadEnv import loadEnv
 
 # Configure logging
@@ -70,19 +71,13 @@ while True:
             userIn = userIn.split(" ")
 
             x = userIn[0]
-            if '.' in x:
-                x = float(x)
-            else:
-                x = int(x)
+            x = processNumber(x)
 
             operandSymbol = userIn[1]
             operandFunc = operandMap[operandSymbol]
 
             y = userIn[2]
-            if '.' in y:
-                y = float(y)
-            else:
-                y = int(y)
+            y = processNumber(y)
 
             result = calcInst.performOperation(operandFunc, x, y)
 
