@@ -4,7 +4,18 @@ class Command:
 
     def execute(self, calculator):
         """
-        List available commands in the commands directory
+        Lists available commands and operations in the commands directory.
+
+        This method scans the commands directory for Python files (excluding special files)
+        and extracts the command names. It then prints the list of available commands and examples
+        of operations that can be performed using the calculator.
+
+        Parameters:
+        calculator (Calculator): The calculator instance. This parameter is not used in this method but is required
+        by the interface for consistency with other command classes.
+
+        Returns:
+        list: A list of available command names extracted from the files in the commands directory.
         """
         commands = []
         for filename in os.listdir(os.path.dirname(__file__)):
