@@ -1,18 +1,26 @@
 import re
+from functions.operandStrip import operandStrip
 
-def multiOperandChecker(input_string: str) -> bool:
+def multiOperandChecker(inputString: str) -> bool:
+    """
+    Checks if there are multiple arithmetic operators in the input string.
+
+    Args:
+    - input_string (str): The input string to check for multiple operators.
+
+    Returns:
+    - bool: True if multiple operators are found, False otherwise.
+
+    Example:
+    >>> multiOperandChecker("5 * 5 + 5")
+    True
+    """
     # Define the pattern to match the operators
-    pattern = r'[\+\-\*/]'
-
-    # Find all occurrences of the operators in the input string
-    operators = re.findall(pattern, input_string)
-
-    # Count the number of occurrences
-    operator_counts = {operator: operators.count(operator) for operator in set(operators)}
+    operands = operandStrip(inputString)
+    operandCount = len(operands)
 
     # Check if any operator appears more than once
-    for count in operator_counts.values():
-        if count > 1:
+    if operandCount > 1:
             return True
-    
-    return False
+    else:
+        return False
