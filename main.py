@@ -43,7 +43,7 @@ while True:
     # Take in user input
     userIn = input("Enter your command\n")
     logging.info(f"User input: {userIn}")
-    print(">> " + userIn)
+    #print(">> " + userIn)
 
     if userIn.lower() in commandList:
         logging.info(f"Command executed: {userIn}")
@@ -77,11 +77,12 @@ while True:
             operandFunc = operandMap[operandSymbol]
 
             y = userIn[2]
-            y = processNumber(y)
-
+            y = processNumber(y)      
+            
             result = calcInst.performOperation(operandFunc, x, y)
 
             if debugFlag:
+                print(f"Debug Line - Cleansed input: {x} {operandSymbol} {y}")
                 print(f"Debug Line - x: {x} | operand: {operandSymbol} | y: {y} | result: {result}")            
 
             print("Result:", result)

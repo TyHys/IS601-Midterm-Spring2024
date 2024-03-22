@@ -14,7 +14,7 @@ class Command:
         print("-------Valid Inputs-------")
         print("Commands")
         for cmd in commands:
-            print("     " + cmd)
+            print("     ❖ " + cmd)
         print("-"*25)
         print(" Operations (e.g.):")
         print("     ❖ 5 + 2")
