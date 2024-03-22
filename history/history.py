@@ -15,6 +15,7 @@ class History:
 
     def clearHistory(self):
         self.histDf = pd.DataFrame(columns=['x', 'operand', 'y', 'result'], dtype=object)
+        return "History cleared"
 
     def getHistory(self):
       if self.histDf.shape[0] == 0:

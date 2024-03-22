@@ -3,5 +3,6 @@ calculator/__pycache__/*
 history/__pycache__/*
 operands/__pycache__/*
 operation/__pycache__/*
-histTester.py
+commands/__pycache__/*
+Tester.py
 history/history_export.csv
