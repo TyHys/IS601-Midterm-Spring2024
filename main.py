@@ -1,14 +1,23 @@
 import logging
+import os
 from calculator.calculator import Calculator
 from operands.operands import add, subtract, multiply, divide
 from functions.multiOperandCheck import multiOperandChecker
 from functions.loadCommands import loadCommand
 from functions.removeWhitespaces import removeWhitespaces
 from functions.dynamicSpaceInsert import dynamicSpaceInsert
+from functions.loadEnv import loadEnv
 
 # Configure logging
 logging.basicConfig(filename='calculator.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logging.info("Program started")
+
+loadEnv()
+
+try:
+    debugFlag = os.getenv("DEBUG", "False") == "True"
+except:
+    debugFlag = False
 
 operandMap = {
     "+": add,
@@ -21,6 +30,10 @@ hr = "_" * 30
 
 calcInst = Calculator()
 
+if debugFlag:
+    print("DEBUG MODE ENABLED")
+    print(f"Debug Line - operandMap = {operandMap}")
+
 command = loadCommand('menu')
 commandList = command.execute(None)
 
@@ -32,6 +45,10 @@ while True:
 
     if userIn.lower() in commandList:
         logging.info(f"Command executed: {userIn}")
+
+        if debugFlag:
+            print(f"Debug Line - executing command from commands/{userIn.lower()}.py")
+            
         command = loadCommand(userIn)
         command.execute(calcInst)        
         print(hr)
@@ -67,6 +84,10 @@ while True:
                 y = int(y)
 
             result = calcInst.performOperation(operandFunc, x, y)
+
+            if debugFlag:
+                print(f"Debug Line - x: {x} | operand: {operandSymbol} | y: {y} | result: {result}")            
+
             print("Result:", result)
             logging.info("Operation performed: %s %s %s = %s", x, operandSymbol, y, result)
             print(hr)

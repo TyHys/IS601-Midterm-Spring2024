@@ -2,10 +2,11 @@
 
 ## To do list
 * ~~Implement a command-plugin system~~
-* Implement logging
+* ~~Implement logging~~
 * ~~Add try/except checks for main.py to scrub inputs~~
 * ~~Add 'delete history' command which will allow you to delete history row by index~~
 * ~~Add 'clear history' command which will execute the same history method~~
+* ~~Add .env and use for (?) something~~
 * Build tests, demostrate 90% coverage
 * Ensure tests run on GitHub
 * Adhere to linting standards

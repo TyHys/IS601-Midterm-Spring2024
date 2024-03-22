@@ -8,3 +8,4 @@ Tester.py
 history/history_export.csv
 functions/__pycache__/*
 calculator.log
+.env
