@@ -7,5 +7,7 @@ commands/__pycache__/*
 Tester.py
 history/history_export.csv
 functions/__pycache__/*
-calculator.log
+input_cleaner/__pycache__/*
+calculator_*
 .env
+.coverage
