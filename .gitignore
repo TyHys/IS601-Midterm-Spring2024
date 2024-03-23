@@ -12,3 +12,5 @@ tests/__pycache__/*
 calculator_*
 .env
 .coverage
+.vscode/*
+history/corrupt_history.csv

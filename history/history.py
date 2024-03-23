@@ -1,52 +1,104 @@
+"""
+A history module, used within the calculator to track all operations
+that have been passed into it. Also includes methods for exporting
+the history, printing it, importing it, or deleting the export file.
+"""
 import os
-import pandas as pd
 from typing import Union, Callable
-
-#    def performOperation(self, operation: Callable, x: Union[int, float], y: Union[int, float]) -> Union[int, float, None]:
+import pandas as pd
 
 class History:
+    """
+    This class represents a history of operations.
+    """
+
     def __init__(self):
-        self.histDf = pd.DataFrame(columns=['x', 'operand', 'y', 'result'], dtype=object)
-        self.histFile_ = r'history/history_export.csv'
+        """
+        Initialize the History object.
+        """
+        self.hist_df = pd.DataFrame(columns=['x', 'operand', 'y', 'result'], dtype=object)
+        self.hist_file = r'history/history_export.csv'
 
-    def histAppend(self, operand: Callable, x: Union[int, float], y: Union[int, float], result: Union[int, float]) -> None:
-        operandName = operand.__name__
-        rowAppend = pd.Series([x, operandName, y, result], index=self.histDf.columns)
-        self.histDf = pd.concat([self.histDf, rowAppend.to_frame().T], ignore_index=True)
-        return None
+    def hist_append(self, operand: Callable, x: Union[int, float], y: Union[int, float],
+                     result: Union[int, float]) -> None:
+        """
+        Append an operation to the history.
 
-    def clearHistory(self):
-        self.histDf = pd.DataFrame(columns=['x', 'operand', 'y', 'result'], dtype=object)
+        Args:
+            operand (Callable): The operation performed.
+            x (Union[int, float]): The first operand.
+            y (Union[int, float]): The second operand.
+            result (Union[int, float]): The result of the operation.
+
+        Returns:
+            None
+        """
+        operand_name = operand.__name__
+        row_append = pd.Series([x, operand_name, y, result], index=self.hist_df.columns)
+        self.hist_df = pd.concat([self.hist_df, row_append.to_frame().T], ignore_index=True)
+
+    def clear_history(self):
+        """
+        Clear the history.
+
+        Returns:
+            str: A message indicating that the history has been cleared.
+        """
+        self.hist_df = pd.DataFrame(columns=['x', 'operand', 'y', 'result'], dtype=object)
         return "History cleared"
 
-    def getHistory(self):
-      if self.histDf.shape[0] == 0:
-        return "No history"
-      else:
-        return self.histDf
+    def get_history(self):
+        """
+        Get the history.
 
-    def exportHistory(self):
-       if self.histDf.shape[0] == 0:
-          return "No history"
-       else:
-          self.histDf.to_csv(self.histFile_, index=False)
-          return f"History saved to {self.histFile_}"
-       
-    def importHistory(self):
-      
-      try:
-         self.histDf = pd.read_csv(self.histFile_)
-         return "History successfully imported"
-      except:
-         return "History failed to import"
-      
-    def deleteHistory(self):
+        Returns:
+            Union[pd.DataFrame, str]: The history DataFrame if available, 
+               otherwise a message indicating no history.
+        """
+        if self.hist_df.shape[0] == 0:
+            return "No history"
+        return self.hist_df
 
-      if os.path.exists(self.histFile_):
-         try:
-               os.remove(self.histFile_)
-               return f"History export file '{self.histFile_}' deleted"
-         except Exception as e:
-               return f"Failed to delete history export file: {str(e)}"
-      else:
-         return f"History export file '{self.histFile_}' does not exist"
+    def export_history(self):
+        """
+        Export the history to a CSV file.
+
+        Returns:
+            str: A message indicating whether the history was exported successfully.
+        """
+        if self.hist_df.shape[0] == 0:
+            return "No history"
+        self.hist_df.to_csv(self.hist_file, index=False)
+        return f"History saved to {self.hist_file}"
+
+    def import_history(self):
+        """
+        Import the history from a CSV file.
+
+        Returns:
+            str: A message indicating whether the history was imported successfully.
+        """
+        try:
+            self.hist_df = pd.read_csv(self.hist_file)
+            return "History successfully imported"
+        except FileNotFoundError as e:
+            return f"History file not found: {str(e)}"
+        except pd.errors.EmptyDataError as e:
+            return f"History file is empty: {str(e)}"
+        except Exception as e:
+            return f"History failed to import: {str(e)}"
+
+    def delete_history(self):
+        """
+        Delete the history file.
+
+        Returns:
+            str: A message indicating whether the history file was deleted successfully or not.
+        """
+        if os.path.exists(self.hist_file):
+            try:
+                os.remove(self.hist_file)
+                return f"History export file '{self.hist_file}' deleted"
+            except Exception as e:
+                return f"Failed to delete history export file: {str(e)}"
+        return f"History export file '{self.hist_file}' does not exist"

@@ -9,5 +9,5 @@ class Command:
         Parameters:
         calculator (Calculator): The calculator instance containing the calculation history.
         """
-        print(calculator.calcHist.exportHistory())
+        print(calculator.calcHist.export_history())
         return None

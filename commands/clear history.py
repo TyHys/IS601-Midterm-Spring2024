@@ -9,5 +9,5 @@ class Command:
         Parameters:
         calculator (Calculator): The calculator instance whose history is to be cleared.
         """
-        print(calculator.calcHist.clearHistory())
+        print(calculator.calcHist.clear_history())
         return None

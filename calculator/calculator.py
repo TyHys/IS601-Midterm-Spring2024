@@ -17,7 +17,7 @@ class Calculator:
 
     def performOperation(self, operation: Callable, x: Union[int, float], y: Union[int, float]) -> Union[int, float, None]:
         operationResult = self.calcOperator.performOperation(operation, x, y)  # Call the method on the instance
-        self.calcHist.histAppend(operation, x, y, operationResult)
+        self.calcHist.hist_append(operation, x, y, operationResult)
         return operationResult
     
     def ingestOperation(self,strIn):
