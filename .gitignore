@@ -8,6 +8,7 @@ Tester.py
 history/history_export.csv
 functions/__pycache__/*
 input_cleaner/__pycache__/*
+tests/__pycache__/*
 calculator_*
 .env
 .coverage

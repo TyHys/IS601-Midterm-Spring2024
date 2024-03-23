@@ -12,5 +12,5 @@ class Command:
         Returns:
         str: A message indicating the success or failure of the operation.
         """
-        print(calculator.calcHist.deleteHistoryRow())
+        print(calculator.calcHist.deleteHistory())
         return None

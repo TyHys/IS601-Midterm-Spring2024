@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 from typing import Union, Callable
 
@@ -6,6 +7,7 @@ from typing import Union, Callable
 class History:
     def __init__(self):
         self.histDf = pd.DataFrame(columns=['x', 'operand', 'y', 'result'], dtype=object)
+        self.histFile_ = r'history/history_export.csv'
 
     def histAppend(self, operand: Callable, x: Union[int, float], y: Union[int, float], result: Union[int, float]) -> None:
         operandName = operand.__name__
@@ -27,28 +29,24 @@ class History:
        if self.histDf.shape[0] == 0:
           return "No history"
        else:
-          exportLocation = r'history/history_export.csv'
-          self.histDf.to_csv(exportLocation, index=False)
-          return f"History saved to {exportLocation}"
+          self.histDf.to_csv(self.histFile_, index=False)
+          return f"History saved to {self.histFile_}"
        
     def importHistory(self):
-      importLocation = r'history/history_export.csv'
+      
       try:
-         self.histDf = pd.read_csv(importLocation)
+         self.histDf = pd.read_csv(self.histFile_)
          return "History successfully imported"
       except:
          return "History failed to import"
       
-    def deleteHistoryRow(self):
-       indexIn = input("Enter a row number to delete:")
-       
-       try:
-          indexIn = int(indexIn)
-       except:
-          return "Invalid input"
+    def deleteHistory(self):
 
-       try:
-          self.histDf = self.histDf.drop(indexIn, axis=0)
-          return f"Row {indexIn} deleted from history"
-       except:
-          return "Row does not exist"
+      if os.path.exists(self.histFile_):
+         try:
+               os.remove(self.histFile_)
+               return f"History export file '{self.histFile_}' deleted"
+         except Exception as e:
+               return f"Failed to delete history export file: {str(e)}"
+      else:
+         return f"History export file '{self.histFile_}' does not exist"
