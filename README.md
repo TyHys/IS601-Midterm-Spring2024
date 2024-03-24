@@ -10,7 +10,7 @@
 * Build tests, demostrate 90% coverage
         ✅calculator   
         ✅commands   
-        ❌functions   
+        ✅functions   
         ✅history   
         ✅input_cleaner   
         ✅operands   
@@ -18,7 +18,7 @@
         ✅tests  
         ✅.gitignore   
         ✅README.md   
-        ❌main.py  
+        ✅main.py  
         ✅requirements.txt   
 * Ensure tests run on GitHub
 * Adhere to linting standards
