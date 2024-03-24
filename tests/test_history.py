@@ -1,5 +1,3 @@
-# pylint: disable=redefined-outer-name
-
 """
 Tests to validate the history module
 """
@@ -8,10 +6,11 @@ import pytest
 import pandas as pd
 from history.history import History
 
-@pytest.fixture
-def history_instance():
+
+@pytest.fixture(name="history_instance")
+def fixture_history_instance():
     """
-    Fixture to return an instance of the History class
+    Create a Calculator instance for testing.
     """
     return History()
 
@@ -149,9 +148,6 @@ def test_delete_history_file_not_removed(history_instance, monkeypatch):
     # Assert that the correct message is returned
     expected_message = "File not found: Mocked FileNotFoundError"
     assert result == expected_message
-
-
-
 
 def test_delete_history_file_does_not_exist(history_instance, monkeypatch):
     """

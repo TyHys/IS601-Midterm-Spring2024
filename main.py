@@ -2,7 +2,7 @@ if __name__ == '__main__':
     import logging
     import os
     from calculator.calculator import Calculator
-    from functions.loadCommands import loadCommand
+    from functions.loadCommands import load_command
     from functions.loadEnv import loadEnv
     import datetime
 
@@ -25,7 +25,7 @@ if __name__ == '__main__':
 
     calcInst = Calculator()
 
-    command = loadCommand('menu')
+    command = load_command('menu')
     commandList = command.execute(None)
 
     if debugFlag:
@@ -43,7 +43,7 @@ if __name__ == '__main__':
                 print(f"Debug Line - executing command from commands/{userIn.lower()}.py")
             
             try:
-                command = loadCommand(userIn)
+                command = load_command(userIn)
                 command.execute(calcInst)
                 
             except Exception as e:
@@ -54,7 +54,7 @@ if __name__ == '__main__':
         else:
 
             try:
-                result = calcInst.ingestOperation(userIn)
+                result = calcInst.ingest_operation(userIn)
 
             except AttributeError as e:
                 print(e)
