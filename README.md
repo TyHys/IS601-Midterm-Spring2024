@@ -8,13 +8,13 @@
 * ~~Add 'clear history' command which will execute the same history method~~
 * ~~Add .env and use for (?) something~~
 * Build tests, demostrate 90% coverage
-        ❌calculator   
+        ✅calculator   
         ❌commands   
         ❌functions   
         ✅history   
         ✅input_cleaner   
         ✅operands   
-        ❌operation   
+        ✅operation   
         ✅tests  
         ✅.gitignore   
         ✅README.md   
