@@ -25,7 +25,7 @@ class Command:
         Returns:
         list: A list of available command names extracted from the files in the commands directory.
         """
-        print(f"Last calculation: {calculator.x_}{calculator.operand_symbol_}{calculator.y_}")
+        print(f"Last calculation: {calculator.x_} {calculator.operand_symbol_} {calculator.y_}")
         commands = []
         for filename in os.listdir(os.path.dirname(__file__)):
             if filename.endswith(".py") and not filename.startswith("__"):
