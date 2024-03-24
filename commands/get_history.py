@@ -1,9 +1,17 @@
+# pylint: disable=too-few-public-methods
+"""
+Command class that implements the get_history command.
+"""
 class Command:
+    """
+    A command class that implements the get_history command.
+    """
     def execute(self, calculator) -> None:
         """
         Executes the get_history command, printing the calculation history.
 
-        This method retrieves the calculation history from the calculator instance and prints it to the console.
+        This method retrieves the calculation history from the calculator
+          instance and prints it to the console.
         The calculation history typically includes past calculations performed using the calculator.
 
         Parameters:
@@ -13,4 +21,4 @@ class Command:
         None
         """
         print(calculator.calc_hist.get_history())
-        return None
+        return calculator.calc_hist.get_history()
