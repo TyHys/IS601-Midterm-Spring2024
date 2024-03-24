@@ -1,4 +1,12 @@
+# pylint: disable=too-few-public-methods
+
+"""
+Command to clear the history of the calculator instance.
+"""
 class Command:
+    """
+    Represents the clear_history command, generalized for the design pattern.
+    """
     def execute(self, calculator) -> None:
         """
         Executes the command to clear the history of the calculator instance.
@@ -9,5 +17,4 @@ class Command:
         Parameters:
         calculator (Calculator): The calculator instance whose history is to be cleared.
         """
-        print(calculator.calcHist.clear_history())
-        return None
+        print(calculator.calc_hist.clear_history())

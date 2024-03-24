@@ -12,5 +12,5 @@ class Command:
         Returns:
         None
         """
-        print(calculator.calcHist.get_history())
+        print(calculator.calc_hist.get_history())
         return None

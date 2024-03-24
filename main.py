@@ -67,11 +67,11 @@ if __name__ == '__main__':
                 continue           
 
             if debugFlag:
-                print(f"Debug Line - Input cleaned to: {calcInst.x_} {calcInst.operandSymbol_} {calcInst.y_}")
-                print(f"Debug Line - x: {calcInst.x_} | operand: {calcInst.operandSymbol_} | y: {calcInst.y_} | result: {result}")            
+                print(f"Debug Line - Input cleaned to: {calcInst.x_} {calcInst.operand_symbol_} {calcInst.y_}")
+                print(f"Debug Line - x: {calcInst.x_} | operand: {calcInst.operand_symbol_} | y: {calcInst.y_} | result: {result}")            
 
             print("Result:", result)
-            logging.info("Operation performed: %s %s %s = %s", calcInst.x_, calcInst.operandSymbol_, calcInst.y_, result)
+            logging.info("Operation performed: %s %s %s = %s", calcInst.x_, calcInst.operand_symbol_, calcInst.y_, result)
             print(hr)
 
 

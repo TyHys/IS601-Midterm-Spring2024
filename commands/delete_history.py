@@ -1,4 +1,11 @@
+# pylint: disable=too-few-public-methods
+"""
+A command class that deletes a row from the calculator's calculation history.
+"""
 class Command:
+    """
+    Represents the delete_history command, generalized for the design pattern.
+    """
     def execute(self, calculator) -> None:
         """
         Executes the command to delete a history row from the calculator's calculation history.
@@ -12,5 +19,5 @@ class Command:
         Returns:
         str: A message indicating the success or failure of the operation.
         """
-        print(calculator.calcHist.delete_history())
-        return None
+        print(calculator.calc_hist.delete_history())
+        return calculator.calc_hist.delete_history()

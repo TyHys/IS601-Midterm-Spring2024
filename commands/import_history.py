@@ -14,5 +14,5 @@ class Command:
         Returns:
         None. The calculation history is printed to the console.
         """
-        print(calculator.calcHist.import_history())
+        print(calculator.calc_hist.import_history())
         return None
