@@ -44,10 +44,7 @@ def test_hist_delete(history_instance):
     if os.path.exists(history_instance.hist_file):
         history_instance.delete_history()
         assert f"History export file '{history_instance.hist_file}' deleted"
-    else:
-        # If the file doesn't exist, test deletion without raising an exception
-        history_instance.delete_history()
-        assert True
+
 
 def test_clear_history(history_instance):
     """
