@@ -9,7 +9,7 @@
 * ~~Add .env and use for (?) something~~
 * Build tests, demostrate 90% coverage
         ✅calculator   
-        ❌commands   
+        ✅commands   
         ❌functions   
         ✅history   
         ✅input_cleaner   

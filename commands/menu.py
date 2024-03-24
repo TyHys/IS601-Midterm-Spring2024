@@ -1,6 +1,13 @@
+# pylint: disable=too-few-public-methods
+"""
+A command class that implements the menu command.
+"""
 import os
 
 class Command:
+    """
+    A command class that implements the menu command.
+    """
 
     def execute(self, calculator):
         """
@@ -11,12 +18,14 @@ class Command:
         of operations that can be performed using the calculator.
 
         Parameters:
-        calculator (Calculator): The calculator instance. This parameter is not used in this method but is required
+        calculator (Calculator): The calculator instance. This parameter 
+            is not used in this method but is required
         by the interface for consistency with other command classes.
 
         Returns:
         list: A list of available command names extracted from the files in the commands directory.
         """
+        print(f"Last calculation: {calculator.x_}{calculator.operand_symbol_}{calculator.y_}")
         commands = []
         for filename in os.listdir(os.path.dirname(__file__)):
             if filename.endswith(".py") and not filename.startswith("__"):
