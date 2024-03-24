@@ -8,6 +8,18 @@
 * ~~Add 'clear history' command which will execute the same history method~~
 * ~~Add .env and use for (?) something~~
 * Build tests, demostrate 90% coverage
+        ❌calculator 
+        ❌commands 
+        ❌functions 
+        ✅history 
+        ✅input_cleaner 
+        ✅operands 
+        ❌operation 
+        ✅tests
+        ✅.gitignore 
+        ✅README.md 
+        ❌main.py
+        ✅requirements.txt 
 * Ensure tests run on GitHub
 * Adhere to linting standards
 * Double check project requirements to ensure completeness
