@@ -20,9 +20,9 @@
         ✅README.md   
         ✅main.py  
         ✅requirements.txt   
-* Ensure tests run on GitHub
-* Adhere to linting standards
-* Double check project requirements to ensure completeness
+* ~~Ensure tests run on GitHub~~
+* ~~Adhere to linting standards~~
+* ~~Double check project requirements to ensure completeness~~
 * Create demo video
 * Submit repo & __MAKE IT PUBLIC__
 
