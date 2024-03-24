@@ -4,7 +4,7 @@ Unit test for the exit command
 """
 from unittest.mock import MagicMock
 import pytest
-from commands.exit import Command
+from commands.exit_calc import Command
 
 class TestCommand:
     """

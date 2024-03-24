@@ -2,7 +2,7 @@ if __name__ == '__main__':
     import logging
     import os
     from calculator.calculator import Calculator
-    from functions.loadCommands import load_command
+    from functions.load_commands import load_command
     from functions.loadEnv import loadEnv
     import datetime
 
@@ -26,7 +26,7 @@ if __name__ == '__main__':
     calcInst = Calculator()
 
     command = load_command('menu')
-    commandList = command.execute(None)
+    commandList = command.execute(calcInst)
 
     if debugFlag:
         print("DEBUG MODE ENABLED")
