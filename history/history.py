@@ -76,17 +76,22 @@ class History:
         Import the history from a CSV file.
 
         Returns:
-            str: A message indicating whether the history was imported successfully.
+            str: A message indicating whether the history was imported 
+                successfully or encountered an error.
         """
         try:
+            if not os.path.exists(self.hist_file):
+                return f"History file not found: {self.hist_file}"
+
             self.hist_df = pd.read_csv(self.hist_file)
+
             return "History successfully imported"
-        except FileNotFoundError as e:
-            return f"History file not found: {str(e)}"
+
         except pd.errors.EmptyDataError as e:
             return f"History file is empty: {str(e)}"
-        except Exception as e:
-            return f"History failed to import: {str(e)}"
+
+
+
 
     def delete_history(self):
         """
@@ -99,6 +104,8 @@ class History:
             try:
                 os.remove(self.hist_file)
                 return f"History export file '{self.hist_file}' deleted"
-            except Exception as e:
-                return f"Failed to delete history export file: {str(e)}"
+            except FileNotFoundError as e:
+                return f"File not found: {str(e)}"
+            except PermissionError as e:
+                return f"Permission error: {str(e)}"
         return f"History export file '{self.hist_file}' does not exist"

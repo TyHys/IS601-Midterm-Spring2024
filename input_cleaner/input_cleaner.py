@@ -1,51 +1,69 @@
+"""
+A module for cleaning input strings for arithmetic operations.
+"""
 import re
 from typing import Union, Tuple
 
-class inputCleaner():
+class InputCleaner:
+    """
+    A class that cleans input strings for arithmetic operations.
+    """
 
-    def commaRemoval(self,strIn: str) -> str:
-         strIn = strIn.replace(',', '')
-         return strIn
-    
-    def removeWhitespaces(self,strIn: str) -> str:
+    def comma_removal(self, str_in: str) -> str:
+        """
+        Remove commas from the input string.
+
+        Args:
+        - str_in (str): The input string possibly containing commas.
+
+        Returns:
+        - str: The input string with commas removed.
+
+        Example:
+        >>> cleaner = InputCleaner()
+        >>> cleaner.comma_removal("1,000,000")
+        '1000000'
+        >>> cleaner.comma_removal("1,000,000.00")
+        '1000000.00'
+        >>> cleaner.comma_removal("10,000")
+        '10000'
+        """
+        return str_in.replace(',', '')
+
+    def remove_whitespaces(self, str_in: str) -> str:
         """
         Removes all whitespace characters from a given string.
 
         Args:
-        - strIn (str): The input string from which whitespace characters will be removed.
+        - str_in (str): The input string from which whitespace characters will be removed.
 
         Returns:
         - str: The input string with all whitespace characters removed.
 
         Example:
-            removeWhitespaces("Hello   World!")
+            remove_whitespaces("Hello   World!")
         'HelloWorld!'
         """
-        strIn = re.sub(r'\s+', '', strIn)
-        return strIn
+        return re.sub(r'\s+', '', str_in)
 
-    def dynamicSpaceInsert(self,strIn: str) -> str:
+    def dynamic_space_insert(self, str_in: str) -> str:
         """
         Inserts spaces around arithmetic operators (+, -, *, /) in a given string.
 
         Args:
-        - strIn (str): The input string containing arithmetic expressions.
+        - str_in (str): The input string containing arithmetic expressions.
 
         Returns:
         - str: The input string with spaces inserted around arithmetic operators.
 
         Example:
-        >>> dynamicSpaceInsert("5+3*2-6/3")
+        >>> InputCleaner().dynamic_space_insert("5+3*2-6/3")
         '5 + 3 * 2 - 6 / 3'
         """
-        pattern = r'(\d+)([\+\-\*/])(\d+)'
-        replacement = r'\1 \2 \3'
-        strIn = re.sub(pattern, replacement, strIn)
-        return strIn
+        pattern = r'([\+\-\*/])'
+        return re.sub(pattern, r' \1 ', str_in)
 
-    import re
-
-    def operandStrip(self,input_string: str) -> str:
+    def operand_strip(self, input_string: str) -> str:
         """
         Removes all characters from a string except "+", "*", "/", and "-".
 
@@ -56,19 +74,13 @@ class inputCleaner():
         - str: The modified string containing only the specified characters.
 
         Example:
-        >>> keep_specific_characters("5 * 5 + 5")
+        >>> InputCleaner().operand_strip("5 * 5 + 5")
         '*+'
         """
-        # Define the pattern to match characters other than "+", "*", "/", and "-"
         pattern = r'[^+\-*/]'
+        return re.sub(pattern, '', input_string)
 
-        # Remove all characters except the specified ones
-        filtered_string = re.sub(pattern, '', input_string)
-
-        return filtered_string
-
-
-    def multiOperandChecker(self,inputString: str) -> bool:
+    def multi_operand_checker(self, input_string: str) -> bool:
         """
         Checks if there are multiple arithmetic operators in the input string.
 
@@ -79,27 +91,19 @@ class inputCleaner():
         - bool: True if multiple operators are found, False otherwise.
 
         Example:
-        >>> multiOperandChecker("5 * 5 + 5")
+        >>> InputCleaner().multi_operand_checker("5 * 5 + 5")
         True
         """
-        # Define the pattern to match the operators
-        operands = self.operandStrip(inputString)
-        operandCount = len(operands)
+        operands = self.operand_strip(input_string)
+        return len(operands) > 1
 
-        # Check if any operator appears more than once
-        if operandCount > 1:
-                return True
-        else:
-            return False
-        
-    from typing import Union
 
-    def convertNumber (self,strIn: str) -> Union[int,float]:
+    def convert_number(self, str_in: str) -> Union[int, float]:
         """
         Convert a string representation of a number to either an integer or a float.
 
         Args:
-        - strIn (str): The input string representation of a number.
+        - str_in (str): The input string representation of a number.
 
         Returns:
         - Union[int, float]: The converted number as an integer if possible, otherwise as a float.
@@ -108,36 +112,44 @@ class inputCleaner():
         - ValueError: If the input string is not a valid number.
 
         Example:
-        >>> processNumber("5")
+        >>> InputCleaner().convert_number("5")
         5
-        >>> processNumber("3.14")
+        >>> InputCleaner().convert_number("3.14")
         3.14
         """
-        if '.' in strIn:
+        try:
+            return int(str_in)
+        except ValueError:
             try:
-                strIn = float(strIn)
-            except:
-                raise ValueError("Invalid number received")
-        else:
-            try:
-                strIn = int(strIn)
-            except:
-                raise ValueError("Invalid number received")
-        
-        return strIn
-        
-    def processInput(self, strIn: str) -> Tuple[Union[int, float], str, Union[int, float]]:
-         
-         if(self.multiOperandChecker(strIn)):
+                return float(str_in)
+            except ValueError as exc:
+                raise ValueError("Invalid number received") from exc
+
+
+    def process_input(self, str_in: str) -> Tuple[Union[int, float], str, Union[int, float]]:
+        """
+        Processes the input string for arithmetic operations.
+
+        Args:
+        - str_in (str): The input string containing an arithmetic expression.
+
+        Returns:
+        - Tuple[Union[int, float], str, Union[int, float]]: 
+                A tuple containing the operands and operator.
+
+        Raises:
+        - AttributeError: If there are multiple operands in the input string.
+        """
+        if self.multi_operand_checker(str_in):
             raise AttributeError("You may only have one operand in your operations")
-         
-         strIn = self.commaRemoval(strIn)
-         strIn = self.removeWhitespaces(strIn)
-         strIn = self.dynamicSpaceInsert(strIn)
-         listOut = strIn.split(" ")
 
-         x = self.convertNumber(listOut[0])
-         operandSymbol = listOut[1]
-         y = self.convertNumber(listOut[2])
+        str_in = self.comma_removal(str_in)
+        str_in = self.remove_whitespaces(str_in)
+        str_in = self.dynamic_space_insert(str_in)
+        list_out = str_in.split(" ")
 
-         return x, operandSymbol, y
+        x = self.convert_number(list_out[0])
+        operand_symbol = list_out[1]
+        y = self.convert_number(list_out[2])
+
+        return x, operand_symbol, y

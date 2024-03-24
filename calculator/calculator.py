@@ -1,14 +1,14 @@
 from history.history import History
 from operation.operation import Operation
 from typing import Union, Callable
-from input_cleaner.input_cleaner import inputCleaner
+from input_cleaner.input_cleaner import InputCleaner
 from operands.operands import add,subtract,multiply,divide
 
 class Calculator:
     def __init__(self):
         self.calcHist = History()
         self.calcOperator = Operation()  # Create an instance of Operation
-        self.calcCleaner = inputCleaner()
+        self.calcCleaner = InputCleaner()
         self.operandMap_ = {'+':add,'-':subtract,'*':multiply,'/':divide}
         self.x_ = None
         self.y_ = None
@@ -21,7 +21,7 @@ class Calculator:
         return operationResult
     
     def ingestOperation(self,strIn):
-        x, operandSymbol, y =self.calcCleaner.processInput(strIn)
+        x, operandSymbol, y =self.calcCleaner.process_input(strIn)
         
         self.x_ = x
         self.y_ = y

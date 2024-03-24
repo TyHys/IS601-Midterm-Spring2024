@@ -79,12 +79,10 @@ def test_import_history_failure(history_instance):
     # Set hist_file to a non-existent file
     history_instance.hist_file = "nonexistent_file.csv"
     # Call import_history()
-    ex_msg = (
-    f"History file not found: [Errno 2] "
-    f"No such file or directory: '{history_instance.hist_file}'"
-    )
+    ex_msg = "History file not found: nonexistent_file.csv"
 
     assert history_instance.import_history() == ex_msg
+
 
 def test_get_history_empty(history_instance):
     """
@@ -149,8 +147,9 @@ def test_delete_history_file_not_removed(history_instance, monkeypatch):
     result = history_instance.delete_history()
 
     # Assert that the correct message is returned
-    expected_message = "Failed to delete history export file: Mocked FileNotFoundError"
+    expected_message = "File not found: Mocked FileNotFoundError"
     assert result == expected_message
+
 
 
 
@@ -170,3 +169,14 @@ def test_delete_history_file_does_not_exist(history_instance, monkeypatch):
     # Assert that the correct message is returned
     expected_message = f"History export file '{history_instance.hist_file}' does not exist"
     assert result == expected_message
+
+def test_import_history_empty_file(history_instance):
+    """
+    Test the import_history method of the History class with an empty file
+    """
+    # Create an empty CSV file
+    with open(history_instance.hist_file, "w", encoding="utf-8"):
+        pass
+
+    expected_msg = "History file is empty: No columns to parse from file"
+    assert history_instance.import_history() == expected_msg
