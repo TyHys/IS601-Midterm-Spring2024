@@ -11,11 +11,10 @@
 * [Logging was used](https://github.com/TyHys/IS601-Midterm-Spring2024/blob/ac65c3046dce1c641f598ed3cfe35e1d3a597823/main.py#L20-L93) throughout the main.py application to capture any initiation, termination, or issues with the application. Logging is used throughout the main.py file so that as a user natrually interacts with the calculator, interactions are logged into a dated log file. In addition, a warning is logged if no DEBUG_MODE key appears in the .env file.
 * "Look Before You Leap" (LBYL) [Example 1](https://github.com/TyHys/IS601-Midterm-Spring2024/blob/faffa9dfd5f84a6d07c93aa9d42e2f61698ad48e/main.py#L52-L53) | [Example 2](https://github.com/TyHys/IS601-Midterm-Spring2024/blob/faffa9dfd5f84a6d07c93aa9d42e2f61698ad48e/history/history.py#L69) | [Example 3](https://github.com/TyHys/IS601-Midterm-Spring2024/blob/faffa9dfd5f84a6d07c93aa9d42e2f61698ad48e/history/history.py#L103) was used throughout the program to perform checks prior to code execution, such that errors could be minimized or entirely eliminated. 
 * "Easier to Ask for Forgiveness than Permission" (EAFP): [Example 1](https://github.com/TyHys/IS601-Midterm-Spring2024/blob/faffa9dfd5f84a6d07c93aa9d42e2f61698ad48e/main.py#L64-L89) | [Example 2](https://github.com/TyHys/IS601-Midterm-Spring2024/blob/faffa9dfd5f84a6d07c93aa9d42e2f61698ad48e/history/history.py#L82-L91) is used throughout the program to try process user inputs by attempting code, and catching errors to be sent for logging if it is unable to do so.
-* *Create demo video*
-* Submit repo & __MAKE IT PUBLIC__
 
 ## Installation
 
+* Clone the git repository
 * Create a new python3 virtual environment.
 * Install requirements from requirements.txt
-* Execute main.py via "python3 main.py
+* Execute main.py via "python3 main.py"
