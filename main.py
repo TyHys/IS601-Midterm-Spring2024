@@ -21,16 +21,17 @@ if __name__ == '__main__':
 
     load_dotenv()
 
-
     debug_mode = os.getenv("DEBUG_MODE")
+    print(debug_mode)
 
     # Check if DEBUG_MODE is set
     if debug_mode is not None:
         # Convert the value to lowercase and check if it's 'true'
         DEBUG_FLAG = debug_mode.lower() == 'true'
     else:
-        # If DEBUG_MODE is not set, assume DEBUG_FLAG as False
+        # If DEBUG_MODE is not set, assume DEBUG_FLAG as False and warn.
         DEBUG_FLAG = False
+        logging.warning("No .env file was found in the application directory on launch.")
 
 
     HR = "_" * 30
