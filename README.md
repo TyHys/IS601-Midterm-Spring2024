@@ -3,6 +3,8 @@
 ## Summary
 * This is a Calculator class with a REPL on top to allow direct user engagement. The core of it lives in calculator/calculator.py which brings together a handful of other objects. Higstory is used within the calculator to track and manipulate the storage of past calculations. Input_cleaner is used to ingest strings from the user in a way to capture user inputs appropriately. A function is used to load commands from a /commands/ folder.
 
+[Summary video](https://drive.google.com/file/d/1fnan0odfkZU6A0_yp42lrxqg9UNFAV0d/view?usp=sharing)
+
 ## Details
 * The [Command Design pattern](https://github.com/TyHys/IS601-Midterm-Spring2024/tree/ac65c3046dce1c641f598ed3cfe35e1d3a597823/commands) was used when developing the primary interface of this application by using a 'commands' filter with a plugin architecture to load individual commands. 
 * A [facade pattern](https://github.com/TyHys/IS601-Midterm-Spring2024/blob/ac65c3046dce1c641f598ed3cfe35e1d3a597823/input_cleaner/input_cleaner.py) was used in building the input cleaning process, such that the operation could run successfully.
