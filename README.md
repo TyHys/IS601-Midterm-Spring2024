@@ -1,7 +1,7 @@
 # Advanced Python Calculator for Software Engineering Graduate Course
 
 ## Summary
-* This is a Calculator class with a REPL on top to allow direct user engagement. The core of it lives in calculator/calculator.py which brings together a handful of other objects. Higstory is used within the calculator to track and manipulate the storage of past calculations. Input_cleaner is used to ingest strings from the user in a way to capture user inputs appropriately. A function is used to load commands from a /commands/ folder.
+* This is a Calculator class with a REPL on top to allow direct user engagement. The core of it lives in calculator/calculator.py which brings together a handful of other objects. History is used within the calculator to track and manipulate the storage of past calculations. Input_cleaner is used to ingest strings from the user in a way to capture user inputs appropriately. A function is used to load commands from a /commands/ folder.
 
 [Summary video](https://drive.google.com/file/d/1fnan0odfkZU6A0_yp42lrxqg9UNFAV0d/view?usp=sharing)
 
